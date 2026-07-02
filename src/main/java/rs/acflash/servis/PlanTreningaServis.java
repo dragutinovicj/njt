@@ -5,7 +5,6 @@
 package rs.acflash.servis;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rs.acflash.dto.impl.PlanTreningaDto;
@@ -32,14 +31,14 @@ public class PlanTreningaServis {
 
     
     public List<PlanTreningaDto> findAll() {
-        return planTreningaRepository.findAll().stream().map(planTreningaMapper::toDto).collect(Collectors.toList());
+        return planTreningaRepository.findAll().stream().map(planTreningaMapper::toDto).toList();
     }
     
      public PlanTreningaDto findById(Long id) throws NjtException {
         return planTreningaMapper.toDto(planTreningaRepository.findById(id));
     }
 
-      public PlanTreningaDto add(PlanTreningaDto dto) throws NjtException {
+      public PlanTreningaDto add(PlanTreningaDto dto) {
         PlanTreninga plan = planTreningaMapper.toEntity(dto);
 
     
@@ -57,7 +56,7 @@ public class PlanTreningaServis {
         planTreningaRepository.deleteById(id);
     }
     
-    public PlanTreningaDto update(PlanTreningaDto dto) throws NjtException {
+    public PlanTreningaDto update(PlanTreningaDto dto) {
         PlanTreninga update = planTreningaMapper.toEntity(dto);
         
         if (update.getStavke() != null) {

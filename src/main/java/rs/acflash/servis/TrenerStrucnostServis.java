@@ -5,7 +5,6 @@
 package rs.acflash.servis;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rs.acflash.dto.impl.TrenerStrucnostDto;
@@ -33,7 +32,7 @@ public class TrenerStrucnostServis {
 
    
     public List<TrenerStrucnostDto> findAll() {
-        return trenerStrucnostRepository.findAll().stream().map(trenerStrucnostMapper::toDto).collect(Collectors.toList());
+        return trenerStrucnostRepository.findAll().stream().map(trenerStrucnostMapper::toDto).toList();
     }
     
      public TrenerStrucnostDto findById(TrenerStrucnostId id) throws NjtException {
@@ -43,18 +42,18 @@ public class TrenerStrucnostServis {
      public List<TrenerStrucnostDto> findByStrucnostId(Long idStrucnost) {
         return trenerStrucnostRepository.findByStrucnostId(idStrucnost)
                 .stream()
-                .map(trenerStrucnostMapper::toDto)
-                .collect(Collectors.toList());
+                .map(trenerStrucnostMapper::toDto).toList()
+                ;
     }
      
      public List<TrenerStrucnostDto> findByTrenerId(Long idTrener) {
          return trenerStrucnostRepository.findByTrenerId(idTrener)
                 .stream()
-                .map(trenerStrucnostMapper::toDto)
-                .collect(Collectors.toList());
+                .map(trenerStrucnostMapper::toDto).toList()
+                ;
     }
 
-      public TrenerStrucnostDto add(TrenerStrucnostDto dto) throws NjtException {
+      public TrenerStrucnostDto add(TrenerStrucnostDto dto) {
         TrenerStrucnost ts = trenerStrucnostMapper.toEntity(dto);
         trenerStrucnostRepository.save(ts);
         return trenerStrucnostMapper.toDto(ts);
@@ -65,7 +64,7 @@ public class TrenerStrucnostServis {
         trenerStrucnostRepository.deleteById(id);
     }
     
-    public TrenerStrucnostDto update(TrenerStrucnostDto dto) throws NjtException {
+    public TrenerStrucnostDto update(TrenerStrucnostDto dto) {
         TrenerStrucnost update = trenerStrucnostMapper.toEntity(dto);
         trenerStrucnostRepository.save(update);
         return trenerStrucnostMapper.toDto(update);

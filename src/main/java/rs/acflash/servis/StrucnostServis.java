@@ -31,14 +31,14 @@ public class StrucnostServis {
     }
 
     public List<StrucnostDto> findAll() {
-        return strucnostRepository.findAll().stream().map(strucnostMapper::toDto).collect(Collectors.toList());
+        return strucnostRepository.findAll().stream().map(strucnostMapper::toDto).toList();
     }
     
      public StrucnostDto findById(Long id) throws NjtException {
         return strucnostMapper.toDto(strucnostRepository.findById(id));
     }
 
-      public StrucnostDto add(StrucnostDto dto) throws NjtException {
+      public StrucnostDto add(StrucnostDto dto) {
         Strucnost strucnost = strucnostMapper.toEntity(dto);
         strucnostRepository.save(strucnost);
         return strucnostMapper.toDto(strucnost);
@@ -48,7 +48,7 @@ public class StrucnostServis {
         strucnostRepository.deleteById(id);
     }
     
-    public StrucnostDto update(StrucnostDto dto) throws NjtException {
+    public StrucnostDto update(StrucnostDto dto) {
         Strucnost update = strucnostMapper.toEntity(dto);
         strucnostRepository.save(update);
         return strucnostMapper.toDto(update);

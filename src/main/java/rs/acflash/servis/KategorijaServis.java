@@ -31,14 +31,14 @@ public class KategorijaServis {
     }
 
     public List<KategorijaDto> findAll() {
-        return kategorijaRepository.findAll().stream().map(kategorijaMapper::toDto).collect(Collectors.toList());
+        return kategorijaRepository.findAll().stream().map(kategorijaMapper::toDto).toList();
     }
     
     public KategorijaDto findById(Long id) throws NjtException {
         return kategorijaMapper.toDto(kategorijaRepository.findById(id));
     }
     
-    public KategorijaDto add(KategorijaDto dto) throws NjtException {
+    public KategorijaDto add(KategorijaDto dto) {
         Kategorija kategorija = kategorijaMapper.toEntity(dto);
         kategorijaRepository.save(kategorija);
         return kategorijaMapper.toDto(kategorija);
@@ -48,7 +48,7 @@ public class KategorijaServis {
         kategorijaRepository.deleteById(id);
     }
     
-    public KategorijaDto update(KategorijaDto dto) throws NjtException {
+    public KategorijaDto update(KategorijaDto dto) {
         Kategorija update = kategorijaMapper.toEntity(dto);
         kategorijaRepository.save(update);
         return kategorijaMapper.toDto(update);

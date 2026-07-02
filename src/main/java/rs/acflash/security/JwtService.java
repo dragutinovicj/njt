@@ -19,6 +19,8 @@ import java.util.Map;
 
 @Service
 public class JwtService {
+    
+    private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(JwtService.class);
 
     @Value("${app.jwt.secret}")
     private String secret;
@@ -55,8 +57,8 @@ public class JwtService {
     public boolean isValid(String token, UserDetails user) {
         try {
             final String username = extractUsername(token);
-            System.out.println("Proveravam token: " + token);
-System.out.println("Korisnik iz tokena: " + username);
+            logger.debug("Proveravam token: {}", token);
+            logger.debug("Korisnik iz tokena: {}", username);
             return username.equals(user.getUsername()) && !isExpired(token); // ✅ popravljene zagrade
         } catch (JwtException e) {
             return false;

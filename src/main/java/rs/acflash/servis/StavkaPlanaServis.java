@@ -5,7 +5,6 @@
 package rs.acflash.servis;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rs.acflash.dto.impl.StavkaPlanaDto;
@@ -33,14 +32,14 @@ public class StavkaPlanaServis {
 
     
     public List<StavkaPlanaDto> findAll() {
-        return stavkaPlanaRepository.findAll().stream().map(stavkaPlanaMapper::toDto).collect(Collectors.toList());
+        return stavkaPlanaRepository.findAll().stream().map(stavkaPlanaMapper::toDto).toList();
     }
     
      public StavkaPlanaDto findById(StavkaPlanaId id) throws NjtException {
         return stavkaPlanaMapper.toDto(stavkaPlanaRepository.findById(id));
     }
 
-      public StavkaPlanaDto add(StavkaPlanaDto dto) throws NjtException {
+      public StavkaPlanaDto add(StavkaPlanaDto dto) {
         StavkaPlana stavka = stavkaPlanaMapper.toEntity(dto);
         stavkaPlanaRepository.save(stavka);
         return stavkaPlanaMapper.toDto(stavka);
@@ -50,7 +49,7 @@ public class StavkaPlanaServis {
         stavkaPlanaRepository.deleteById(id);
     }
     
-    public StavkaPlanaDto update(StavkaPlanaDto dto) throws NjtException {
+    public StavkaPlanaDto update(StavkaPlanaDto dto) {
         StavkaPlana update = stavkaPlanaMapper.toEntity(dto);
         stavkaPlanaRepository.save(update);
         return stavkaPlanaMapper.toDto(update);

@@ -18,7 +18,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 @Component
 public class JwtAuthFilter extends OncePerRequestFilter {
-
+    private static final org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(JwtAuthFilter.class);
     private final JwtService jwt;
     private final AppUserDetailsService uds;
 
@@ -33,8 +33,8 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             FilterChain filterChain)
             throws ServletException, IOException {
 
-        System.out.println("JwtAuthFilter aktiviran za: " + request.getRequestURI());
-        System.out.println("Auth header: " + request.getHeader("Authorization"));
+        logger.debug("JwtAuthFilter aktiviran za: {}", request.getRequestURI());
+        logger.debug("Auth header: {}", request.getHeader("Authorization"));
 
         String path = request.getServletPath();
         if (path.equals("/api/auth/login")) {
@@ -51,7 +51,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             try {
                 username = jwt.extractUsername(token);
             } catch (Exception e) {
-                System.out.println("Nevalidan token: " + e.getMessage());
+               logger.debug("Nevalidan token: {}", e.getMessage());
             }
         }
 
@@ -65,9 +65,9 @@ public class JwtAuthFilter extends OncePerRequestFilter {
                 authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
                 SecurityContextHolder.getContext().setAuthentication(authToken);
-                System.out.println("Token validan, korisnik autentifikovan: " + username);
+                logger.debug("Token validan, korisnik autentifikovan: {}", username);
             } else {
-                System.out.println("Token nije validan");
+                logger.debug("Token nije validan");
             }
         }
 

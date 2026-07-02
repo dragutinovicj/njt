@@ -5,7 +5,6 @@
 package rs.acflash.servis;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rs.acflash.dto.impl.AtleticarDto;
@@ -31,14 +30,14 @@ public class AtleticarServis {
     }
     
     public List<AtleticarDto> findAll() {
-        return atleticarRepository.findAll().stream().map(atleticarMapper::toDto).collect(Collectors.toList());
+       return atleticarRepository.findAll().stream().map(atleticarMapper::toDto).toList();
     }
     
      public AtleticarDto findById(Long id) throws NjtException {
         return atleticarMapper.toDto(atleticarRepository.findById(id));
     }
 
-      public AtleticarDto add(AtleticarDto dto) throws NjtException {
+      public AtleticarDto add(AtleticarDto dto){
         Atleticar atleticar = atleticarMapper.toEntity(dto);
         atleticarRepository.save(atleticar);
         return atleticarMapper.toDto(atleticar);
@@ -48,7 +47,7 @@ public class AtleticarServis {
         atleticarRepository.deleteById(id);
     }
     
-    public AtleticarDto update(AtleticarDto dto) throws NjtException {
+    public AtleticarDto update(AtleticarDto dto) {
         Atleticar update = atleticarMapper.toEntity(dto);
         atleticarRepository.save(update);
         return atleticarMapper.toDto(update);

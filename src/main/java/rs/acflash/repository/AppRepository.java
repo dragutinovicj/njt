@@ -5,6 +5,7 @@
 package rs.acflash.repository;
 
 import java.util.List;
+import rs.acflash.exception.NjtException;
 
 /**
  *
@@ -12,7 +13,7 @@ import java.util.List;
  */
 public interface AppRepository<E, T> {
     List<E> findAll();
-    E findById(T id) throws Exception;
+    E findById(T id) throws NjtException;
     void save(E entity);
     void deleteById(T id);
     
