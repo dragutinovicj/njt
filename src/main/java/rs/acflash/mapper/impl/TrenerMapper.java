@@ -18,14 +18,12 @@ public class TrenerMapper implements DtoEntityMapper<TrenerDto, Trener>{
 
     @Override
     public TrenerDto toDto(Trener e) {
-        TrenerDto dto = new TrenerDto(e.getIdTrener(), e.getIme(), e.getPrezime(), e.getKorisnickoIme(), e.getLozinka());
-        return dto;
+        return new TrenerDto(e.getIdTrener(), e.getIme(), e.getPrezime(), e.getKorisnickoIme(), e.getLozinka());
     }
 
     @Override
     public Trener toEntity(TrenerDto t) {
-        Trener entity = new Trener(t.getIdTrener(), t.getIme(), t.getPrezime(), t.getKorisnickoIme(), t.getLozinka(), null);
-        return entity;
+       return new Trener(t.getIdTrener(), t.getIme(), t.getPrezime(), t.getKorisnickoIme(), t.getLozinka(), null);
     }
     
 }

@@ -10,6 +10,7 @@ import jakarta.transaction.Transactional;
 import java.util.List;
 import org.springframework.stereotype.Repository;
 import rs.acflash.entity.impl.Atleticar;
+import rs.acflash.exception.NjtException;
 import rs.acflash.repository.AppRepository;
 
 /**
@@ -28,10 +29,10 @@ public class AtleticarRepository implements AppRepository<Atleticar, Long> {
     }
 
     @Override
-    public Atleticar findById(Long id) throws Exception {
+    public Atleticar findById(Long id) throws NjtException {
         Atleticar a = entityManager.find(Atleticar.class, id);
         if (a == null) {
-            throw new Exception("Atleticar nije pronađen");
+            throw new NjtException("Atleticar nije pronađen");
         }
         return a;
     }

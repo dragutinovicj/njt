@@ -10,10 +10,10 @@ import java.util.List;
  *
  * @author Korisnik
  */
-public interface AppRepository<E, ID> {
+public interface AppRepository<E, T> {
     List<E> findAll();
-    E findById(ID id) throws Exception;
+    E findById(T id) throws Exception;
     void save(E entity);
-    void deleteById(ID id);
+    void deleteById(T id);
     
 }

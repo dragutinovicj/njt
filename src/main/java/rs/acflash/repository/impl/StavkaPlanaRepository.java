@@ -11,6 +11,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 import rs.acflash.entity.impl.StavkaPlana;
 import rs.acflash.entity.impl.StavkaPlanaId;
+import rs.acflash.exception.NjtException;
 import rs.acflash.repository.AppRepository;
 
 /**
@@ -29,10 +30,10 @@ public class StavkaPlanaRepository implements AppRepository<StavkaPlana, StavkaP
     }
 
     @Override
-    public StavkaPlana findById(StavkaPlanaId id) throws Exception {
+    public StavkaPlana findById(StavkaPlanaId id) throws NjtException {
         StavkaPlana sp = entityManager.find(StavkaPlana.class, id);
         if (sp == null) {
-            throw new Exception("Stavka nije pronađena");
+            throw new NjtException("Stavka nije pronađena");
         }
         return sp;
     }

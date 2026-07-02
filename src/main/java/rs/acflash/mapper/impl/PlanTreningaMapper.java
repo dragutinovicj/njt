@@ -4,9 +4,7 @@
  */
 package rs.acflash.mapper.impl;
 
-import jakarta.persistence.Entity;
 import java.util.List;
-import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
 import rs.acflash.dto.impl.PlanTreningaDto;
 import rs.acflash.dto.impl.StavkaPlanaDto;
@@ -34,11 +32,10 @@ public class PlanTreningaMapper implements DtoEntityMapper<PlanTreningaDto, Plan
        Long idTrener = e.getTrener() != null ? e.getTrener().getIdTrener() :null;
        Long idAtleticar = e.getAtleticar() != null ? e.getAtleticar().getIdAtleticar() : null;
        List<StavkaPlanaDto> stavke = e.getStavke() != null
-                ? e.getStavke().stream().map(stavkaMapper::toDto).collect(Collectors.toList())
+               ? e.getStavke().stream().map(stavkaMapper::toDto).toList()
                 : null;
        
-       PlanTreningaDto dto = new PlanTreningaDto(e.getIdPlan(), e.getDatum(), e.getIntenzitet(), idAtleticar, idTrener, stavke);
-       return dto;
+      return new PlanTreningaDto(e.getIdPlan(), e.getDatum(), e.getIntenzitet(), idAtleticar, idTrener, stavke);
     }
 
     @Override
@@ -53,7 +50,7 @@ public class PlanTreningaMapper implements DtoEntityMapper<PlanTreningaDto, Plan
                 stavka.setPlan(entity); 
                 return stavka;
             })
-            .collect(Collectors.toList());
+            .toList();
         entity.setStavke(stavke);
     }
 

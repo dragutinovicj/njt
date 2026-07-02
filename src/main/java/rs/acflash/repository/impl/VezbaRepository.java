@@ -10,6 +10,7 @@ import jakarta.transaction.Transactional;
 import java.util.List;
 import org.springframework.stereotype.Repository;
 import rs.acflash.entity.impl.Vezba;
+import rs.acflash.exception.NjtException;
 import rs.acflash.repository.AppRepository;
 
 /**
@@ -28,10 +29,10 @@ public class VezbaRepository implements AppRepository<Vezba, Long> {
     }
 
     @Override
-    public Vezba findById(Long id) throws Exception {
+    public Vezba findById(Long id) throws NjtException {
         Vezba v = entityManager.find(Vezba.class, id);
         if (v == null) {
-            throw new Exception("Vezba nije pronađena");
+            throw new NjtException("Vezba nije pronađena");
         }
         return v;
     }

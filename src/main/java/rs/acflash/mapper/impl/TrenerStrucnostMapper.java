@@ -23,9 +23,7 @@ public class TrenerStrucnostMapper implements DtoEntityMapper<TrenerStrucnostDto
     public TrenerStrucnostDto toDto(TrenerStrucnost e) {
         Long idTrener = e.getTrener() != null ? e.getTrener().getIdTrener() : null;
         Long idStrucnost = e.getStrucnost() != null ? e.getStrucnost().getIdStrucnost() : null;
-        TrenerStrucnostDto dto = new TrenerStrucnostDto(idTrener, idStrucnost, e.getOdlikovanje());
-        return dto;
-
+        return new TrenerStrucnostDto(idTrener, idStrucnost, e.getOdlikovanje());
     }
 
     @Override
@@ -33,8 +31,7 @@ public class TrenerStrucnostMapper implements DtoEntityMapper<TrenerStrucnostDto
         Trener trener = t.getIdTrener() != null ? new Trener(t.getIdTrener()) : null;
         Strucnost strucnost = t.getIdStrucnost() != null ? new Strucnost(t.getIdStrucnost()) : null;
         TrenerStrucnostId id = new TrenerStrucnostId(t.getIdTrener(), t.getIdStrucnost());
-        TrenerStrucnost entity = new TrenerStrucnost(id, trener, strucnost, t.getOdlikovanje());
-        return entity;
+       return new TrenerStrucnost(id, trener, strucnost, t.getOdlikovanje());
     }
 
 }

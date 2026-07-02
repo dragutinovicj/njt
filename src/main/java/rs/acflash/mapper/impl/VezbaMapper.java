@@ -18,14 +18,12 @@ public class VezbaMapper implements DtoEntityMapper<VezbaDto, Vezba>{
 
     @Override
     public VezbaDto toDto(Vezba e) {
-        VezbaDto dto = new VezbaDto(e.getIdVezba(), e.getNaziv(), e.getTip(), e.getOpis(), e.getTezina());
-        return dto;
+        return new VezbaDto(e.getIdVezba(), e.getNaziv(), e.getTip(), e.getOpis(), e.getTezina());
     }
 
     @Override
     public Vezba toEntity(VezbaDto t) {
-        Vezba entity = new Vezba(t.getIdVezba(), t.getNaziv(), t.getTip(), t.getOpis(), t.getTezina());
-        return entity;
+        return new Vezba(t.getIdVezba(), t.getNaziv(), t.getTip(), t.getOpis(), t.getTezina());
     }
     
 }

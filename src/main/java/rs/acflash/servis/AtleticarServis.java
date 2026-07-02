@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rs.acflash.dto.impl.AtleticarDto;
 import rs.acflash.entity.impl.Atleticar;
+import rs.acflash.exception.NjtException;
 import rs.acflash.mapper.impl.AtleticarMapper;
 import rs.acflash.repository.impl.AtleticarRepository;
 
@@ -33,11 +34,11 @@ public class AtleticarServis {
         return atleticarRepository.findAll().stream().map(atleticarMapper::toDto).collect(Collectors.toList());
     }
     
-     public AtleticarDto findById(Long id) throws Exception {
+     public AtleticarDto findById(Long id) throws NjtException {
         return atleticarMapper.toDto(atleticarRepository.findById(id));
     }
 
-      public AtleticarDto add(AtleticarDto dto) throws Exception {
+      public AtleticarDto add(AtleticarDto dto) throws NjtException {
         Atleticar atleticar = atleticarMapper.toEntity(dto);
         atleticarRepository.save(atleticar);
         return atleticarMapper.toDto(atleticar);
@@ -47,7 +48,7 @@ public class AtleticarServis {
         atleticarRepository.deleteById(id);
     }
     
-    public AtleticarDto update(AtleticarDto dto) throws Exception {
+    public AtleticarDto update(AtleticarDto dto) throws NjtException {
         Atleticar update = atleticarMapper.toEntity(dto);
         atleticarRepository.save(update);
         return atleticarMapper.toDto(update);

@@ -10,6 +10,7 @@ import jakarta.transaction.Transactional;
 import java.util.List;
 import org.springframework.stereotype.Repository;
 import rs.acflash.entity.impl.PlanTreninga;
+import rs.acflash.exception.NjtException;
 import rs.acflash.repository.AppRepository;
 
 /**
@@ -28,10 +29,10 @@ public class PlanTreningaRepository implements AppRepository<PlanTreninga, Long>
     }
 
     @Override
-    public PlanTreninga findById(Long id) throws Exception {
+    public PlanTreninga findById(Long id) throws NjtException {
         PlanTreninga p = entityManager.find(PlanTreninga.class, id);
         if (p == null) {
-            throw new Exception("Atleticar nije pronađen");
+            throw new NjtException("Atleticar nije pronađen");
         }
         return p;
     }

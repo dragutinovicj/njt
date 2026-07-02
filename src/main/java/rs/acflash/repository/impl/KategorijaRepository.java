@@ -10,6 +10,7 @@ import jakarta.transaction.Transactional;
 import java.util.List;
 import org.springframework.stereotype.Repository;
 import rs.acflash.entity.impl.Kategorija;
+import rs.acflash.exception.NjtException;
 import rs.acflash.repository.AppRepository;
 
 /**
@@ -27,10 +28,10 @@ public class KategorijaRepository implements AppRepository<Kategorija, Long>{
     }
 
     @Override
-    public Kategorija findById(Long id) throws Exception {
+    public Kategorija findById(Long id) throws NjtException {
        Kategorija k = entityManager.find(Kategorija.class, id);
        if(k==null)
-           throw new Exception("Kategorija nije pronađena");
+           throw new NjtException("Kategorija nije pronađena");
        return k;
     }
 

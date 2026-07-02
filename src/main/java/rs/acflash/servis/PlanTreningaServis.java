@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import rs.acflash.dto.impl.PlanTreningaDto;
 import rs.acflash.entity.impl.PlanTreninga;
 import rs.acflash.entity.impl.StavkaPlana;
+import rs.acflash.exception.NjtException;
 import rs.acflash.mapper.impl.PlanTreningaMapper;
 import rs.acflash.repository.impl.PlanTreningaRepository;
 
@@ -34,11 +35,11 @@ public class PlanTreningaServis {
         return planTreningaRepository.findAll().stream().map(planTreningaMapper::toDto).collect(Collectors.toList());
     }
     
-     public PlanTreningaDto findById(Long id) throws Exception {
+     public PlanTreningaDto findById(Long id) throws NjtException {
         return planTreningaMapper.toDto(planTreningaRepository.findById(id));
     }
 
-      public PlanTreningaDto add(PlanTreningaDto dto) throws Exception {
+      public PlanTreningaDto add(PlanTreningaDto dto) throws NjtException {
         PlanTreninga plan = planTreningaMapper.toEntity(dto);
 
     
@@ -56,7 +57,7 @@ public class PlanTreningaServis {
         planTreningaRepository.deleteById(id);
     }
     
-    public PlanTreningaDto update(PlanTreningaDto dto) throws Exception {
+    public PlanTreningaDto update(PlanTreningaDto dto) throws NjtException {
         PlanTreninga update = planTreningaMapper.toEntity(dto);
         
         if (update.getStavke() != null) {

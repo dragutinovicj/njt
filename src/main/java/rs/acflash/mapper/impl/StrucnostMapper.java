@@ -18,14 +18,12 @@ public class StrucnostMapper implements DtoEntityMapper<StrucnostDto, Strucnost>
 
     @Override
     public StrucnostDto toDto(Strucnost e) {
-        StrucnostDto dto = new StrucnostDto(e.getIdStrucnost(), e.getNaziv(), e.getOpis());
-        return dto;
+       return new StrucnostDto(e.getIdStrucnost(), e.getNaziv(), e.getOpis());
     }
 
     @Override
     public Strucnost toEntity(StrucnostDto t) {
-        Strucnost entity = new Strucnost(t.getIdStrucnost(), t.getNaziv(), t.getOpis());
-        return entity;
+        return new Strucnost(t.getIdStrucnost(), t.getNaziv(), t.getOpis());
     }
     
     

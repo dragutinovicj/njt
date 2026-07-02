@@ -18,8 +18,7 @@ public class KategorijaMapper implements DtoEntityMapper<KategorijaDto, Kategori
 
     @Override
     public KategorijaDto toDto(Kategorija e) {
-        KategorijaDto dto = new KategorijaDto(e.getIdKategorija(), e.getNaziv(), e.getOpis());
-        return dto;
+        return new KategorijaDto(e.getIdKategorija(), e.getNaziv(), e.getOpis());
     }
 
     @Override

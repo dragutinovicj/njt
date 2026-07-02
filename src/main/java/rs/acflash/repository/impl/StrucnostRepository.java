@@ -10,6 +10,7 @@ import jakarta.transaction.Transactional;
 import java.util.List;
 import org.springframework.stereotype.Repository;
 import rs.acflash.entity.impl.Strucnost;
+import rs.acflash.exception.NjtException;
 import rs.acflash.repository.AppRepository;
 
 /**
@@ -28,10 +29,10 @@ public class StrucnostRepository implements AppRepository<Strucnost, Long>{
     }
 
     @Override
-    public Strucnost findById(Long id) throws Exception {
+    public Strucnost findById(Long id) throws NjtException {
         Strucnost s = entityManager.find(Strucnost.class, id);
         if (s == null) {
-            throw new Exception("Strucnost nije pronađena");
+            throw new NjtException("Strucnost nije pronađena");
         }
         return s;
     }

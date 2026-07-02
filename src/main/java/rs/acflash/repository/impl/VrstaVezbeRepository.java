@@ -6,6 +6,7 @@ package rs.acflash.repository.impl;
 
 import java.util.List;
 import org.springframework.stereotype.Repository;
+import rs.acflash.exception.NjtException;
 import rs.acflash.repository.AppRepository;
 
 /**
@@ -21,7 +22,7 @@ public class VrstaVezbeRepository implements AppRepository<Object, Object>{
     }
 
     @Override
-    public Object findById(Object id) throws Exception {
+    public Object findById(Object id) throws NjtException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

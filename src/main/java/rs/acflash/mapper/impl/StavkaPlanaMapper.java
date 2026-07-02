@@ -24,8 +24,7 @@ public class StavkaPlanaMapper implements DtoEntityMapper<StavkaPlanaDto, Stavka
         Long idPlan = e.getPlan() != null ? e.getPlan().getIdPlan() : null;
         Long idVezba = e.getVezba() != null ? e.getVezba().getIdVezba() : null;
         Long rb = e.getId() != null ? e.getId().getRb() : null;
-        StavkaPlanaDto dto = new StavkaPlanaDto(idPlan, rb, idVezba, e.getBrojSerija(), e.getBrojPonavljanja(), e.getIntenzitet());
-        return dto;
+       return new StavkaPlanaDto(idPlan, rb, idVezba, e.getBrojSerija(), e.getBrojPonavljanja(), e.getIntenzitet());
     }
 
     @Override
@@ -33,8 +32,7 @@ public class StavkaPlanaMapper implements DtoEntityMapper<StavkaPlanaDto, Stavka
         PlanTreninga plan = t.getIdPlan() != null ? new PlanTreninga(t.getIdPlan()) : null;
         Vezba vezba = t.getIdVezba() != null ? new Vezba(t.getIdVezba()) : null;
         StavkaPlanaId id = new StavkaPlanaId(t.getRb(), t.getIdPlan());
-        StavkaPlana entity = new StavkaPlana(id, plan, vezba, t.getBrojSerija(), t.getBrojSerija(), t.getIntenzitet());
-        return entity;
+     return new StavkaPlana(id, plan, vezba, t.getBrojSerija(), t.getBrojPonavljanja(), t.getIntenzitet());
     }
     
 }

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rs.acflash.dto.impl.TrenerDto;
 import rs.acflash.entity.impl.Trener;
+import rs.acflash.exception.NjtException;
 import rs.acflash.mapper.impl.TrenerMapper;
 import rs.acflash.repository.impl.TrenerRepository;
 
@@ -33,11 +34,11 @@ public class TrenerServis {
         return trenerRepository.findAll().stream().map(trenerMapper::toDto).collect(Collectors.toList());
     }
     
-     public TrenerDto findById(Long id) throws Exception {
+     public TrenerDto findById(Long id) throws NjtException {
         return trenerMapper.toDto(trenerRepository.findById(id));
     }
 
-      public TrenerDto add(TrenerDto dto) throws Exception {
+      public TrenerDto add(TrenerDto dto) throws NjtException {
         Trener trener = trenerMapper.toEntity(dto);
         trenerRepository.save(trener);
         return trenerMapper.toDto(trener);
@@ -47,7 +48,7 @@ public class TrenerServis {
         trenerRepository.deleteById(id);
     }
     
-    public TrenerDto update(TrenerDto dto) throws Exception {
+    public TrenerDto update(TrenerDto dto) throws NjtException {
         Trener update = trenerMapper.toEntity(dto);
         trenerRepository.save(update);
         return trenerMapper.toDto(update);

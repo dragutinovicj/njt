@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rs.acflash.dto.impl.VezbaDto;
 import rs.acflash.entity.impl.Vezba;
+import rs.acflash.exception.NjtException;
 import rs.acflash.mapper.impl.VezbaMapper;
 import rs.acflash.repository.impl.VezbaRepository;
 
@@ -32,11 +33,11 @@ public class VezbaServis {
         return vezbaRepository.findAll().stream().map(vezbaMapper::toDto).collect(Collectors.toList());
     }
     
-     public VezbaDto findById(Long id) throws Exception {
+     public VezbaDto findById(Long id) throws NjtException {
         return vezbaMapper.toDto(vezbaRepository.findById(id));
     }
 
-      public VezbaDto add(VezbaDto dto) throws Exception {
+      public VezbaDto add(VezbaDto dto) throws NjtException {
         Vezba vezba = vezbaMapper.toEntity(dto);
         vezbaRepository.save(vezba);
         return vezbaMapper.toDto(vezba);
@@ -46,7 +47,7 @@ public class VezbaServis {
         vezbaRepository.deleteById(id);
     }
     
-    public VezbaDto update(VezbaDto dto) throws Exception {
+    public VezbaDto update(VezbaDto dto) throws NjtException {
         Vezba update = vezbaMapper.toEntity(dto);
         vezbaRepository.save(update);
         return vezbaMapper.toDto(update);

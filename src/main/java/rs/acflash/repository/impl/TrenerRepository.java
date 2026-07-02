@@ -11,6 +11,7 @@ import jakarta.transaction.Transactional;
 import java.util.List;
 import org.springframework.stereotype.Repository;
 import rs.acflash.entity.impl.Trener;
+import rs.acflash.exception.NjtException;
 import rs.acflash.repository.AppRepository;
 
 /**
@@ -29,10 +30,10 @@ public class TrenerRepository implements AppRepository<Trener, Long> {
     }
 
     @Override
-    public Trener findById(Long id) throws Exception {
+    public Trener findById(Long id) throws NjtException {
         Trener t = entityManager.find(Trener.class, id);
         if (t == null) {
-            throw new Exception("Trener nije pronađen");
+            throw new NjtException("Trener nije pronađen");
         }
         return t;
     }

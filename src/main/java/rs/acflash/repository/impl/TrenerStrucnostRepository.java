@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import rs.acflash.dto.impl.TrenerStrucnostDto;
 import rs.acflash.entity.impl.TrenerStrucnost;
 import rs.acflash.entity.impl.TrenerStrucnostId;
+import rs.acflash.exception.NjtException;
 import rs.acflash.repository.AppRepository;
 
 /**
@@ -30,10 +31,10 @@ public class TrenerStrucnostRepository implements AppRepository<TrenerStrucnost,
     }
 
     @Override
-    public TrenerStrucnost findById(TrenerStrucnostId id) throws Exception {
+    public TrenerStrucnost findById(TrenerStrucnostId id) throws NjtException {
          TrenerStrucnost ts = entityManager.find(TrenerStrucnost.class, id);
         if (ts == null) {
-            throw new Exception("Nije pronađena");
+            throw new NjtException("Nije pronađena");
         }
         return ts;
     }

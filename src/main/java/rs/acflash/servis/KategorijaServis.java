@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rs.acflash.dto.impl.KategorijaDto;
 import rs.acflash.entity.impl.Kategorija;
+import rs.acflash.exception.NjtException;
 import rs.acflash.mapper.impl.KategorijaMapper;
 import rs.acflash.repository.impl.KategorijaRepository;
 
@@ -33,11 +34,11 @@ public class KategorijaServis {
         return kategorijaRepository.findAll().stream().map(kategorijaMapper::toDto).collect(Collectors.toList());
     }
     
-    public KategorijaDto findById(Long id) throws Exception {
+    public KategorijaDto findById(Long id) throws NjtException {
         return kategorijaMapper.toDto(kategorijaRepository.findById(id));
     }
     
-    public KategorijaDto add(KategorijaDto dto) throws Exception {
+    public KategorijaDto add(KategorijaDto dto) throws NjtException {
         Kategorija kategorija = kategorijaMapper.toEntity(dto);
         kategorijaRepository.save(kategorija);
         return kategorijaMapper.toDto(kategorija);
@@ -47,7 +48,7 @@ public class KategorijaServis {
         kategorijaRepository.deleteById(id);
     }
     
-    public KategorijaDto update(KategorijaDto dto) throws Exception {
+    public KategorijaDto update(KategorijaDto dto) throws NjtException {
         Kategorija update = kategorijaMapper.toEntity(dto);
         kategorijaRepository.save(update);
         return kategorijaMapper.toDto(update);

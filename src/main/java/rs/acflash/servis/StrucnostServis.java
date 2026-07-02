@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rs.acflash.dto.impl.StrucnostDto;
 import rs.acflash.entity.impl.Strucnost;
+import rs.acflash.exception.NjtException;
 import rs.acflash.mapper.impl.StrucnostMapper;
 import rs.acflash.repository.impl.StrucnostRepository;
 
@@ -33,11 +34,11 @@ public class StrucnostServis {
         return strucnostRepository.findAll().stream().map(strucnostMapper::toDto).collect(Collectors.toList());
     }
     
-     public StrucnostDto findById(Long id) throws Exception {
+     public StrucnostDto findById(Long id) throws NjtException {
         return strucnostMapper.toDto(strucnostRepository.findById(id));
     }
 
-      public StrucnostDto add(StrucnostDto dto) throws Exception {
+      public StrucnostDto add(StrucnostDto dto) throws NjtException {
         Strucnost strucnost = strucnostMapper.toEntity(dto);
         strucnostRepository.save(strucnost);
         return strucnostMapper.toDto(strucnost);
@@ -47,7 +48,7 @@ public class StrucnostServis {
         strucnostRepository.deleteById(id);
     }
     
-    public StrucnostDto update(StrucnostDto dto) throws Exception {
+    public StrucnostDto update(StrucnostDto dto) throws NjtException {
         Strucnost update = strucnostMapper.toEntity(dto);
         strucnostRepository.save(update);
         return strucnostMapper.toDto(update);

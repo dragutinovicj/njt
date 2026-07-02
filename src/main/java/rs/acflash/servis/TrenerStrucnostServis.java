@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import rs.acflash.dto.impl.TrenerStrucnostDto;
 import rs.acflash.entity.impl.TrenerStrucnost;
 import rs.acflash.entity.impl.TrenerStrucnostId;
+import rs.acflash.exception.NjtException;
 import rs.acflash.mapper.impl.TrenerStrucnostMapper;
 import rs.acflash.repository.impl.TrenerStrucnostRepository;
 
@@ -35,7 +36,7 @@ public class TrenerStrucnostServis {
         return trenerStrucnostRepository.findAll().stream().map(trenerStrucnostMapper::toDto).collect(Collectors.toList());
     }
     
-     public TrenerStrucnostDto findById(TrenerStrucnostId id) throws Exception {
+     public TrenerStrucnostDto findById(TrenerStrucnostId id) throws NjtException {
         return trenerStrucnostMapper.toDto(trenerStrucnostRepository.findById(id));
     }
      
@@ -53,7 +54,7 @@ public class TrenerStrucnostServis {
                 .collect(Collectors.toList());
     }
 
-      public TrenerStrucnostDto add(TrenerStrucnostDto dto) throws Exception {
+      public TrenerStrucnostDto add(TrenerStrucnostDto dto) throws NjtException {
         TrenerStrucnost ts = trenerStrucnostMapper.toEntity(dto);
         trenerStrucnostRepository.save(ts);
         return trenerStrucnostMapper.toDto(ts);
@@ -64,7 +65,7 @@ public class TrenerStrucnostServis {
         trenerStrucnostRepository.deleteById(id);
     }
     
-    public TrenerStrucnostDto update(TrenerStrucnostDto dto) throws Exception {
+    public TrenerStrucnostDto update(TrenerStrucnostDto dto) throws NjtException {
         TrenerStrucnost update = trenerStrucnostMapper.toEntity(dto);
         trenerStrucnostRepository.save(update);
         return trenerStrucnostMapper.toDto(update);
