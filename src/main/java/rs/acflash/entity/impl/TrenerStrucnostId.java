@@ -6,6 +6,7 @@ package rs.acflash.entity.impl;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  *
@@ -32,8 +33,20 @@ public class TrenerStrucnostId implements Serializable{
         return idStrucnost;
     }
     
-    
-    
+   
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TrenerStrucnostId that = (TrenerStrucnostId) o;
+        return Objects.equals(idTrener, that.idTrener)
+                && Objects.equals(idStrucnost, that.idStrucnost);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idTrener, idStrucnost);
+    }
     
             
     
