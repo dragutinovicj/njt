@@ -24,11 +24,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
-import rs.acflash.dto.impl.TrenerDto;
 import rs.acflash.dto.impl.TrenerStrucnostDto;
 import rs.acflash.entity.impl.TrenerStrucnostId;
-import rs.acflash.servis.TrenerServis;
 import rs.acflash.servis.TrenerStrucnostServis;
 
 /**

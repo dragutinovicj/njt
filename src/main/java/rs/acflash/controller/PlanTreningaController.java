@@ -26,7 +26,6 @@ import org.springframework.web.server.ResponseStatusException;
 import rs.acflash.dto.impl.PlanTreningaDto;
 import rs.acflash.dto.impl.TrenerDto;
 import rs.acflash.servis.PlanTreningaServis;
-import rs.acflash.servis.TrenerServis;
 
 /**
  *

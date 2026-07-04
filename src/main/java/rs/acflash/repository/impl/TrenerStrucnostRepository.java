@@ -9,7 +9,6 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import java.util.List;
 import org.springframework.stereotype.Repository;
-import rs.acflash.dto.impl.TrenerStrucnostDto;
 import rs.acflash.entity.impl.TrenerStrucnost;
 import rs.acflash.entity.impl.TrenerStrucnostId;
 import rs.acflash.exception.NjtException;

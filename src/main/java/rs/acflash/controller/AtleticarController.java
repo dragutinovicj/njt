@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import rs.acflash.dto.impl.AtleticarDto;
-import rs.acflash.dto.impl.KategorijaDto;
 import rs.acflash.servis.AtleticarServis;
 
 /**

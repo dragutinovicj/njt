@@ -18,6 +18,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 @Component
 public class JwtAuthFilter extends OncePerRequestFilter {
+
     private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(JwtAuthFilter.class);
     private final JwtService jwt;
     private final AppUserDetailsService uds;
@@ -33,9 +34,10 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             FilterChain filterChain)
             throws ServletException, IOException {
 
-        log.debug("JwtAuthFilter aktiviran za: {}", request.getRequestURI());
-        log.debug("Auth header: {}", request.getHeader("Authorization"));
-
+        if (log.isDebugEnabled()) {
+            log.debug("JwtAuthFilter aktiviran za: {}", request.getRequestURI());
+            log.debug("Auth header: {}", request.getHeader("Authorization"));
+        }
         String path = request.getServletPath();
         if (path.equals("/api/auth/login")) {
             filterChain.doFilter(request, response);
@@ -51,7 +53,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             try {
                 username = jwt.extractUsername(token);
             } catch (Exception e) {
-               log.debug("Nevalidan token: {}", e.getMessage());
+                log.debug("Nevalidan token: {}", e.getMessage());
             }
         }
 

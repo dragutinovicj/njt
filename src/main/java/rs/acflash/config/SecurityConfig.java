@@ -16,7 +16,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import rs.acflash.security.AppUserDetailsService;
 import rs.acflash.security.JwtAuthFilter;
 
 @Configuration
@@ -37,7 +36,6 @@ public class SecurityConfig {
             var corsConfig = new org.springframework.web.cors.CorsConfiguration();
             corsConfig.setAllowedOriginPatterns(List.of("http://localhost:3000"));
             corsConfig.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-            corsConfig.setAllowedOriginPatterns(List.of("http://localhost:3000"));
             corsConfig.setAllowCredentials(true);
             return corsConfig;
         }))

@@ -48,7 +48,7 @@ class AuthServiceTest {
     @BeforeEach
     void setUp() {
         trenerMapper = new TrenerMapper();
-        authService = new AuthService(authManager, jwtService, trenerRepository, passwordEncoder, trenerMapper);
+        authService = new AuthService(authManager, jwtService, trenerRepository, trenerMapper);
     }
 
     @Test

@@ -28,7 +28,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
-import rs.acflash.dto.impl.AtleticarDto;
 import rs.acflash.dto.impl.TrenerDto;
 import rs.acflash.servis.TrenerServis;
 

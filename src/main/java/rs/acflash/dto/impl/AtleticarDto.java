@@ -11,7 +11,6 @@ import jakarta.validation.constraints.Positive;
 import java.util.Date;
 import org.hibernate.validator.constraints.URL;
 import rs.acflash.dto.Dto;
-import rs.acflash.entity.impl.Kategorija;
 
 /**
  *

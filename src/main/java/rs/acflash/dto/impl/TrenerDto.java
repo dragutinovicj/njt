@@ -25,7 +25,7 @@ public class TrenerDto implements Dto{
     private String prezime;
 
     @NotBlank(message = "Korisničko ime je obavezno")
-    @Pattern(regexp = ".*@.*", message = "Korisničko ime mora sadržati znak '@'")
+    @Pattern(regexp = "[^@]*@.*", message = "Korisničko ime mora sadržati znak '@'")
     private String korisnickoIme;
 
     @NotBlank(message = "Lozinka je obavezna")

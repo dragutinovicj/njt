@@ -23,6 +23,16 @@ public class TrenerStrucnostId implements Serializable{
         this.idTrener = idTrener;
         this.idStrucnost = idStrucnost;
     }
+
+    public Long getIdTrener() {
+        return idTrener;
+    }
+
+    public Long getIdStrucnost() {
+        return idStrucnost;
+    }
+    
+    
     
     
             

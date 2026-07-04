@@ -25,7 +25,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import rs.acflash.dto.impl.TrenerDto;
 import rs.acflash.dto.impl.VezbaDto;
-import rs.acflash.servis.TrenerServis;
 import rs.acflash.servis.VezbaServis;
 
 /**

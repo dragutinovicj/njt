@@ -28,15 +28,13 @@ public class AuthService {
     private final AuthenticationManager authManager;
     private final JwtService jwt;
     private final TrenerRepository treneri;
-    private final PasswordEncoder encoder;
     private final TrenerMapper mapper;
 
     @Autowired
-    public AuthService(AuthenticationManager authManager, JwtService jwt, TrenerRepository treneri, PasswordEncoder encoder, TrenerMapper mapper) {
+    public AuthService(AuthenticationManager authManager, JwtService jwt, TrenerRepository treneri, TrenerMapper mapper) {
         this.authManager = authManager;
         this.jwt = jwt;
         this.treneri = treneri;
-        this.encoder = encoder;
         this.mapper = mapper;
     }
 
